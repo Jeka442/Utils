@@ -67,16 +67,7 @@ export const ExportToXlsx = <T = { [key: string]: string | number }>(
   const wb = new ExcelJS.Workbook();
   const sheet = wb.addWorksheet("my sheet");
 
-  const { setCellStyle, setHeaderStyle, filename, cellStyles, headerStyles } =
-    config
-      ? config
-      : {
-          setCellStyle: undefined,
-          setHeaderStyle: undefined,
-          filename: undefined,
-          cellStyles: undefined,
-          headerStyles: undefined,
-        };
+  const { setCellStyle, setHeaderStyle, filename, cellStyles, headerStyles } = config || {};
 
   const hasSomeHeaders = columnsDef?.find((x) => x.header !== undefined)
     ? true
